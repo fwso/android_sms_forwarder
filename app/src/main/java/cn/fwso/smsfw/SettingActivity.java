@@ -7,13 +7,13 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 
 public class SettingActivity extends AppCompatActivity {
 
     public final static String EXTRA_MESSAGE = "cn.fwso.hello2.MESSAGE";
-    public final static String KEY_PHONE_NUMBER = "cn.fwso.hello2.KEY_PHONE_NUMBER";
 
     private EditText editPhone;
     @Override
@@ -23,58 +23,28 @@ public class SettingActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
-
         editPhone = (EditText) findViewById(R.id.edit_phone);
         editPhone.setText(getCurrentPhone());
     }
 
-    //@Override
-    //public boolean onCreateOptionsMenu(Menu menu) {
-    //    // Inflate the menu; this adds items to the action bar if it is present.
-    //    getMenuInflater().inflate(R.menu.menu_my, menu);
-    //    return true;
-    //}
-
-    //@Override
-    //public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-    //    int id = item.getItemId();
-
-    //    //noinspection SimplifiableIfStatement
-    //    if (id == R.id.action_settings) {
-    //        return true;
-    //    }
-
-    //    return super.onOptionsItemSelected(item);
-    //}
-
     public void savePhoneNumber(View view) {
         Intent intent = new Intent(this, SavedActivity.class);
         //EditText editPhone = (EditText) findViewById(R.id.edit_phone);
-        String message = editPhone.getText().toString();
+        String message = editPhone.getText().toString().trim();
 
         SharedPreferences pref = getSharedPreferences(getString(R.string.preference_file_key), MODE_PRIVATE);
         SharedPreferences.Editor editor = pref.edit();
-        editor.putString(KEY_PHONE_NUMBER, message);
+        editor.putString(getString(R.string.preference_key_phone_number), message);
         editor.commit();
+        Log.d("SMSFWD", "Setting Saved: " + message);
 
-        intent.putExtra(EXTRA_MESSAGE, message + " Saved");
+        intent.putExtra(EXTRA_MESSAGE, message);
         startActivity(intent);
     }
 
     private String getCurrentPhone() {
         SharedPreferences pref = getSharedPreferences(getString(R.string.preference_file_key), MODE_PRIVATE);
-        String phone = pref.getString(KEY_PHONE_NUMBER, null);
+        String phone = pref.getString(getString(R.string.preference_key_phone_number), null);
         if (phone != null) {
             return phone;
         }

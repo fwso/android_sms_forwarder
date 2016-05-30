@@ -1,4 +1,4 @@
-package cn.fwso.hello3;
+package cn.fwso.smsfw;
 
 import org.junit.Test;
 

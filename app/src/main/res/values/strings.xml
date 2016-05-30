@@ -1,9 +1,9 @@
 <resources>
-    <string name="app_name">Hello3</string>
+    <string name="app_name">SMS Forwarder</string>
     <string name="edit_phone">Enter a Phone Number</string>
     <string name="button_save">Save</string>
-    <string name="title_activity_display_message2">My Message</string>
+    <string name="title_activity_display_">Saved</string>
     <string name="action_settings">Settings</string>
-    <string name="title_activity_display_message">DisplayMessageActivity</string>
+    <string name="title_activity_display_message">saved</string>
     <string name="preference_file_key">sms_forwarder_perf.data</string>
 </resources>

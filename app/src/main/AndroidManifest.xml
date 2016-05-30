@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="cn.fwso.hello3">
+    package="cn.fwso.smsfw">
 
     <application
         android:allowBackup="true"
@@ -9,7 +9,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".MyActivity"
+            android:name=".SettingActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -19,13 +19,13 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".DisplayMessageActivity"
+            android:name=".SavedActivity"
             android:label="@string/title_activity_display_message"
-            android:parentActivityName=".MyActivity"
+            android:parentActivityName=".SettingActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="cn.fwso.hello3.MyActivity" />
+                android:value=".SettingActivity" />
         </activity>
     </application>
 

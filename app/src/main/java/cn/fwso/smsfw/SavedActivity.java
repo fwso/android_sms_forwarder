@@ -1,4 +1,4 @@
-package cn.fwso.hello3;
+package cn.fwso.smsfw;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,7 +10,7 @@ import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-public class DisplayMessageActivity extends AppCompatActivity {
+public class SavedActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +31,7 @@ public class DisplayMessageActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
 
-        String message = intent.getStringExtra(MyActivity.EXTRA_MESSAGE);
+        String message = intent.getStringExtra(SettingActivity.EXTRA_MESSAGE);
 
         TextView textView = new TextView(this);
         textView.setTextSize(40);
